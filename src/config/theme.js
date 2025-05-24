@@ -46,11 +46,11 @@ export const themeColors = {
 
   // Background Colors
   background: {
-    primary: '#0f172a',    // Main dark background
-    secondary: '#1e293b',  // Secondary dark background
-    tertiary: '#334155',   // Lighter dark background
-    glass: 'rgba(255, 255, 255, 0.1)',      // Glass effect
-    glassDark: 'rgba(0, 0, 0, 0.3)',        // Dark glass effect
+    primary: '#000000',    // Main dark background
+    secondary: '#000000',  // Secondary dark background
+    tertiary: '#000000',   // Lighter dark background
+    glass: 'rgba(0, 0, 0, 0.8)',      // Glass effect
+    glassDark: 'rgba(0, 0, 0, 0.9)',        // Dark glass effect
   },
 
   // Text Colors
@@ -71,11 +71,11 @@ export const themeColors = {
 
 // Gradient Definitions
 export const gradients = {
-  primary: 'linear-gradient(135deg, #f97316, #eab308)',           // Orange to Yellow
-  secondary: 'linear-gradient(135deg, #1e293b, #334155)',         // Dark gradient
-  accent: 'linear-gradient(135deg, #d946ef, #f97316)',           // Purple to Orange
-  hero: 'linear-gradient(to bottom, #111827, #1f2937, #000000)', // Hero background
-  card: 'linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.8))', // Card gradient
+  primary: 'linear-gradient(135deg, #000000, #111111)',           // Black gradient
+  secondary: 'linear-gradient(135deg, #000000, #000000)',         // Pure black gradient
+  accent: 'linear-gradient(135deg, #000000, #111111)',           // Black gradient
+  hero: 'linear-gradient(to bottom, #000000, #000000, #000000)', // Black background
+  card: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9))', // Black card gradient
 };
 
 // Component-specific theme configurations
@@ -103,32 +103,32 @@ export const componentThemes = {
 
   card: {
     default: {
-      background: 'rgba(30, 41, 59, 0.5)',
+      background: 'rgba(0, 0, 0, 0.9)',
       border: themeColors.border.primary,
       backdrop: 'blur(8px)',
     },
     glass: {
-      background: themeColors.background.glass,
+      background: 'rgba(0, 0, 0, 0.8)',
       border: 'rgba(255, 255, 255, 0.2)',
       backdrop: 'blur(8px)',
     },
     solid: {
-      background: themeColors.background.secondary,
+      background: '#000000',
       border: themeColors.border.primary,
     },
   },
 
   navigation: {
-    background: 'rgba(15, 23, 42, 0.9)',
+    background: 'rgba(0, 0, 0, 0.9)',
     border: themeColors.border.primary,
     logo: {
-      background: themeColors.background.tertiary,
+      background: '#000000',
       text: themeColors.text.primary,
     },
     item: {
       text: themeColors.text.secondary,
       textHover: themeColors.text.primary,
-      backgroundHover: 'rgba(51, 65, 85, 0.5)',
+      backgroundHover: 'rgba(0, 0, 0, 0.5)',
       accent: themeColors.text.accent,
     },
   },
@@ -161,7 +161,7 @@ export const animations = {
 export const getCSSVar = (path) => {
   const pathArray = path.split('.');
   let current = themeColors;
-  
+
   for (const key of pathArray) {
     current = current[key];
     if (current === undefined) {
@@ -169,14 +169,14 @@ export const getCSSVar = (path) => {
       return null;
     }
   }
-  
+
   return current;
 };
 
 // Utility function to generate CSS custom properties
 export const generateCSSVars = () => {
   const vars = {};
-  
+
   // Generate color variables
   Object.entries(themeColors).forEach(([category, colors]) => {
     if (typeof colors === 'object' && !Array.isArray(colors)) {
@@ -187,12 +187,12 @@ export const generateCSSVars = () => {
       vars[`--${category}`] = colors;
     }
   });
-  
+
   // Generate gradient variables
   Object.entries(gradients).forEach(([name, value]) => {
     vars[`--gradient-${name}`] = value;
   });
-  
+
   return vars;
 };
 

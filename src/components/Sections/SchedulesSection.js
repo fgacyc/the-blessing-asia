@@ -76,7 +76,7 @@ const SchedulesSection = () => {
 
   // Component to render a single day's schedule
   const DaySchedule = ({ dayData, dayNumber }) => (
-    <div className="bg-gray-800/80 backdrop-blur-sm rounded-lg p-6 border border-gray-700/50">
+    <div className="bg-black/90 backdrop-blur-sm rounded-lg p-6 border border-gray-700/50">
       {/* Day Header */}
       <div className="mb-6">
         <h3 className="text-white text-xl font-bold mb-1">

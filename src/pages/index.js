@@ -5,7 +5,7 @@ import BlessingAsiaLanding from '../components/Header';
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-black min-h-screen">
       <BlessingAsiaLanding />
     </div>
   );

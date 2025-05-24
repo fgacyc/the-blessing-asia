@@ -40,9 +40,9 @@ const SpeakersSection = () => {
   // Speaker Card Component
   const SpeakerCard = ({ speaker }) => (
     <div className={`${isMobile ? 'flex flex-col items-center text-center space-y-6' : 'flex items-start space-x-6'} mb-12 lg:mb-16`}>
-      {/* Speaker Image with Orange Glow */}
+      {/* Speaker Image - Pure Black Background */}
       <div className="relative flex-shrink-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-amber-500/30 rounded-full blur-xl scale-110"></div>
+        {/* Pure Black Background - No glow effect */}
         <div className="relative w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-2 border-orange-400/50">
           <img
             src={speaker.image}
@@ -68,9 +68,7 @@ const SpeakersSection = () => {
 
   return (
     <section id="speakers" className="min-h-screen bg-black py-16 lg:py-24 relative overflow-hidden">
-      {/* Background Orange Glow Effects */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-l from-orange-500/10 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-gradient-to-r from-orange-500/10 to-transparent rounded-full blur-3xl"></div>
+      {/* Pure Black Background - No glow effects */}
 
       <Container>
         {/* Section Header */}

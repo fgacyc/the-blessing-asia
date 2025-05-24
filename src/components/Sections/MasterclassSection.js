@@ -17,7 +17,7 @@ const MasterclassSection = () => {
 
         {/* Content Pending Card */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-gray-800/80 backdrop-blur-sm rounded-lg p-12 border border-gray-700/50 text-center">
+          <div className="bg-black/90 backdrop-blur-sm rounded-lg p-12 border border-gray-700/50 text-center">
             <h3 className="text-white text-2xl font-bold">
               Content Pending
             </h3>

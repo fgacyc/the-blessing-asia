@@ -8,7 +8,7 @@ export default function Document() {
         <link rel="icon" href="/cyc-logo.png" type="image/png" sizes="32x32" />
       </Head>
 
-      <body className="antialiased">
+      <body className="antialiased bg-black">
         <Main />
         <NextScript />
       </body>
