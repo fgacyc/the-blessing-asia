@@ -1,36 +1,38 @@
 import React from 'react';
 
-const MobileMenu = ({ isOpen, onClose, navigationItems, onNavigate }) => {
-  if (!isOpen) return null;
+const MobileMenu = ({ isOpen, onClose, navigationItems, onNavigate, headerHeight }) => {
+  // The menu is always rendered in the DOM for smoother transitions.
+  // Visibility and interactivity are controlled by opacity, maxHeight, and pointer-events.
 
   return (
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300"
+        className={`
+          fixed inset-0 bg-black/50 backdrop-blur-sm z-40
+          transition-opacity duration-300 ease-in-out
+          ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+        `}
         onClick={onClose}
+        aria-hidden={!isOpen} // For accessibility
       />
 
       {/* Menu Panel */}
-      <div className={`fixed top-0 left-0 right-0 w-full bg-theme-secondary/95 backdrop-blur-md border-b border-theme-primary z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-        {/* Header */}
-        <div className="flex justify-between items-center p-6 border-b border-theme-primary">
-          <div className="bg-theme-tertiary px-4 py-2 rounded">
-            <span className="text-theme-primary font-semibold">TB Logo</span>
-          </div>
-          <button
-            onClick={onClose}
-            className="text-theme-primary p-2 rounded-lg hover:bg-theme-tertiary/50 transition-colors"
-            aria-label="Close menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
+      <div
+        className={`
+          fixed left-0 right-0 w-full bg-theme-secondary/95 backdrop-blur-md border-b border-theme-primary 
+          z-45 {/* Positioned below the main header (z-50 in Header.js) */}
+          overflow-hidden {/* Crucial for max-height animation */}
+          transition-all duration-300 ease-in-out {/* Animates maxHeight and opacity */}
+          ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+        `}
+        style={{
+          top: `${headerHeight || 0}px`, // Position directly below the header
+          maxHeight: isOpen ? `calc(100vh - ${headerHeight || 0}px)` : '0px', // Animate height
+        }}
+      >
         {/* Navigation Items */}
-        <div className="py-6">
+        <div className="py-6 pt-8"> {/* Added some top padding to compensate for removed header */}
           {navigationItems.map((item) => (
             <div
               key={item.id}

@@ -5,8 +5,8 @@ import useResponsive from '../../hooks/useResponsive';
 const TicketsSection = () => {
   const { isMobile } = useResponsive();
 
-  // Configurable countdown target date (you can change this)
-  const [targetDate] = useState(new Date('2025-12-31T23:59:59').getTime());
+  // Countdown target date set to June 23, 2025
+  const [targetDate] = useState(new Date('2025-06-23T23:59:59').getTime());
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -42,10 +42,10 @@ const TicketsSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-orange-500/40 to-amber-500/40 rounded-full blur-xl scale-150"></div>
 
       {/* Ticket Image */}
-      <div className="relative w-16 h-20 lg:w-20 lg:h-24 mx-auto">
+      <div className="relative w-32 h-36 lg:w-24 lg:h-28 mx-auto"> {/* Increased size */}
         <img
           src="/Ticket.png"
-          alt="Ticket"
+          alt="Ticket Icon"
           className="w-full h-full object-contain"
         />
       </div>
@@ -80,8 +80,8 @@ const TicketsSection = () => {
           {/* Pure Black Background */}
 
           <div className="relative z-10">
-            {/* Chess Icon positioned at top right for both mobile and webview */}
-            <div className="absolute top-0 right-0 z-20">
+            {/* Ticket Icon positioned to overlap top right border */}
+            <div className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 z-20"> {/* Adjusted position for overlap */}
               <TicketIcon />
             </div>
 
@@ -115,7 +115,7 @@ const TicketsSection = () => {
                 </div>
 
                 {/* Early Pass */}
-                <div className="bg-black/50 border border-orange-500/30 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:border-orange-500 rounded-xl p-6 space-y-4 transition-all duration-300 cursor-pointer group">
+                <div className="bg-black/50 border border-orange-500/30 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:border-orange-500 rounded-xl p-6 space-y-4 transition-all duration-300 cursor-pointer group"> {/* Group class is used for hover effects on children */}
                   <div className="flex items-center justify-between">
                     <h3 className="text-white font-bold text-lg">Early Pass</h3>
                     <CountdownTimer />
@@ -123,30 +123,27 @@ const TicketsSection = () => {
                   <div className="space-y-2">
                     <div className="flex items-baseline space-x-2">
                       <span className="text-white text-3xl font-bold">RM368</span>
-                      <span className="text-gray-300 group-hover:text-orange-200 text-sm transition-colors duration-300">(saved RM50)</span>
+                      <span className="text-gray-300 group-hover:text-white text-sm transition-colors duration-300">(saved RM50)</span>
                     </div>
-                    <button className="flex items-center space-x-2 text-white">
+                    <a href="https://www.ticket2u.com.my/event/43661_7d063d69f0a4491d841783172b824776" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white">
                       <span>Register Now</span>
                       <span className="text-xl">👆</span>
                       <span className="ml-auto">→</span>
-                    </button>
+                    </a>
                   </div>
                 </div>
 
                 {/* Regular Pass */}
-                <div className="bg-black/50 border border-orange-500/30 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:border-orange-500 rounded-xl p-6 space-y-4 transition-all duration-300 cursor-pointer group">
-                  <div className="flex items-center justify-between">
+                <div className="bg-black/50 border border-orange-500/30 rounded-xl p-6 space-y-4 transition-all duration-300">
+                  <div className="flex items-center">
                     <h3 className="text-white font-bold text-lg">Regular Pass</h3>
-                    <CountdownTimer />
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-baseline space-x-2">
                       <span className="text-white text-3xl font-bold">RM418</span>
                     </div>
-                    <button className="flex items-center space-x-2 text-white">
+                    <button className="flex items-center space-x-2 text-white" disabled>
                       <span>Register Now</span>
-                      <span className="text-xl">👆</span>
-                      <span className="ml-auto">→</span>
                     </button>
                   </div>
                 </div>
@@ -183,7 +180,7 @@ const TicketsSection = () => {
                 {/* Ticket Options - Side by Side */}
                 <div className="grid grid-cols-2 gap-6">
                   {/* Early Pass */}
-                  <div className="bg-black/50 border border-orange-500/30 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:border-orange-500 rounded-xl p-6 space-y-4 transition-all duration-300 cursor-pointer group">
+                  <div className="bg-black/50 border border-orange-500/30 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:border-orange-500 rounded-xl p-6 space-y-4 transition-all duration-300 cursor-pointer group"> {/* Group class for hover effects */}
                     <div className="flex items-center justify-between">
                       <h3 className="text-white font-bold text-lg">Early Pass</h3>
                       <CountdownTimer />
@@ -191,29 +188,27 @@ const TicketsSection = () => {
                     <div className="space-y-2">
                       <div className="flex items-baseline space-x-2">
                         <span className="text-white text-2xl font-bold">RM368</span>
-                        <span className="text-gray-300 group-hover:text-orange-200 text-sm transition-colors duration-300">(saved RM50)</span>
+                        <span className="text-gray-300 group-hover:text-white text-sm transition-colors duration-300">(saved RM50)</span>
                       </div>
-                      <button className="flex items-center justify-between w-full text-white">
+                      <a href="https://www.ticket2u.com.my/event/43661_7d063d69f0a4491d841783172b824776" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full text-white">
                         <div className="flex items-center space-x-2">
                           <span>Register Now</span>
                           <span className="text-lg">👆</span>
                         </div>
                         <span>→</span>
-                      </button>
+                      </a>
                     </div>
                   </div>
 
                   {/* Regular Pass */}
-                  <div className="bg-black/50 border border-orange-500/30 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:border-orange-500 rounded-xl p-6 space-y-4 transition-all duration-300 cursor-pointer group">
+                  <div className="bg-black/50 border border-orange-500/30 rounded-xl p-6 space-y-4 transition-all duration-300">
                     <h3 className="text-white font-bold text-lg">Regular Pass</h3>
                     <div className="space-y-2">
                       <div className="text-white text-2xl font-bold">RM418</div>
-                      <button className="flex items-center justify-between w-full text-white">
+                      <button className="flex items-center justify-start w-full text-white" disabled>
                         <div className="flex items-center space-x-2">
                           <span>Register Now</span>
-                          <span className="text-lg">👆</span>
                         </div>
-                        <span>→</span>
                       </button>
                     </div>
                   </div>

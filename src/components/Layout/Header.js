@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import useResponsive from '../../hooks/useResponsive';
 import MobileMenu from './MobileMenu';
 
@@ -8,6 +8,8 @@ const Header = () => {
   const [scrollDirection, setScrollDirection] = useState('up');
   const [lastScrollY, setLastScrollY] = useState(0);
   const { isMobile } = useResponsive();
+  const navRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
 
   // Handle scroll effects
   useEffect(() => {
@@ -31,6 +33,25 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  // Measure header height
+  useEffect(() => {
+    const navElement = navRef.current;
+    if (!navElement) return;
+
+    const observer = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        // Ensure we're using the offsetHeight for the actual rendered height
+        setHeaderHeight(entry.target.offsetHeight);
+      }
+    });
+
+    observer.observe(navElement);
+
+    return () => {
+      observer.unobserve(navElement);
+    };
+  }, []); // Empty dependency array, ResizeObserver handles changes.
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -50,6 +71,7 @@ const Header = () => {
   return (
     <>
       <nav className={`
+        /* Added ref for height measurement */
         relative z-50 flex justify-between items-center w-full px-4 sm:px-8
         fixed top-0 left-0 right-0 header-slide-in
         transition-all duration-500 ease-in-out
@@ -58,7 +80,7 @@ const Header = () => {
           ? 'py-3 bg-gradient-to-r from-theme-primary/98 via-theme-primary/95 to-theme-primary/98 backdrop-blur-enhanced border-b border-theme-primary/50 shadow-2xl'
           : 'py-6 bg-gradient-to-r from-theme-primary/95 via-theme-primary/90 to-theme-primary/95 backdrop-blur-sm border-b border-theme-primary shadow-lg'
         }
-      `}>
+      `} ref={navRef}>
         {/* Logo */}
         <div className={`
           bg-theme-tertiary px-4 sm:px-6 py-3 rounded-lg hover-glow
@@ -126,15 +148,15 @@ const Header = () => {
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center relative z-10">
               <span className={`
-                bg-theme-primary block transition-all duration-500 ease-out h-0.5 w-6 rounded-sm
+                bg-white block transition-all duration-500 ease-out h-0.5 w-6 rounded-sm
                 ${isMobileMenuOpen ? 'rotate-45 translate-y-1 bg-orange-400' : '-translate-y-0.5'}
               `}></span>
               <span className={`
-                bg-theme-primary block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5
+                bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5
                 ${isMobileMenuOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}
               `}></span>
               <span className={`
-                bg-theme-primary block transition-all duration-500 ease-out h-0.5 w-6 rounded-sm
+                bg-white block transition-all duration-500 ease-out h-0.5 w-6 rounded-sm
                 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1 bg-orange-400' : 'translate-y-0.5'}
               `}></span>
             </div>
@@ -150,6 +172,7 @@ const Header = () => {
         onClose={() => setIsMobileMenuOpen(false)}
         navigationItems={navigationItems}
         onNavigate={scrollToSection}
+        headerHeight={headerHeight}
       />
     </>
   );
