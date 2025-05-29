@@ -9,31 +9,53 @@ const SpeakersSection = () => {
   const speakers = [
     {
       id: 1,
-      name: '廖文华',
+      name: '罗伯寿',
       title: '牧师',
-      image: '/api/placeholder/400/400',
-      bio: 'Lorem ipsum quis facilisis tristique purus fermentum ac in elit venenatis eu turpis sodales elit risus et sit nascetur luctus id massa elit vitae pretium.'
+      image: '/罗伯寿牧师.png',
+      bio: 'FGA 中文堂',
+      occupation: '副主理牧师'
     },
     {
       id: 2,
-      name: '罗伯寿',
-      title: '牧师',
-      image: '/api/placeholder/400/400',
-      bio: 'Lorem ipsum quis facilisis tristique purus fermentum ac in elit venenatis eu turpis sodales elit risus et sit nascetur luctus id massa elit vitae pretium.'
+      name: '廖文华',
+      title: '牧师',  
+      image: '/廖文华牧师.png',
+      bio: '台北真道教会 Truth Church',
+      occupation: '主任牧师',
+      bioLine2: '梦想之家教育基金会',
+      occupation2: '创办人兼董事长'
     },
     {
       id: 3,
-      name: 'Mary Chen',
+      name: '叶果先生',
       title: '',
-      image: '/api/placeholder/400/400',
-      bio: 'Lorem ipsum quis facilisis tristique purus fermentum ac in elit venenatis eu turpis sodales elit risus et sit nascetur luctus id massa elit vitae pretium.'
+      image: '/叶果先生.png',
+      bio: '瑞士海外品牌公司总经理 ',
+      occupation: '总经理'
     },
     {
       id: 4,
-      name: '南华哥',
+      name: '李绍龄会长',
       title: '',
-      image: '/api/placeholder/400/400',
-      bio: 'Lorem ipsum quis facilisis tristique purus fermentum ac in elit venenatis eu turpis sodales elit risus et sit nascetur luctus id massa elit vitae pretium.'
+      image: '/李绍龄会长.png',
+      bio: '台湾世界展望会World Vision',
+      occupation: '会长'
+    },
+    {
+      id: 5,
+      name: '袁明琦医师',
+      title: '',
+      image: '/袁明琦医师.png',
+      bio: '臺安醫院 ',
+      occupation: '心脏外科主任、行政副院長'
+    },
+    {
+      id: 6,
+      name: 'Mary Chen',
+      title: '',
+      image: '/MaryChen.png',
+      bio: '全马最大癌症医院 ｜Beacon Hospital 宝康医院',
+      occupation: '创办人'
     },
   ];
 
@@ -42,8 +64,8 @@ const SpeakersSection = () => {
     <div className={`${isMobile ? 'flex flex-col items-center text-center space-y-6' : 'flex items-start space-x-6'} mb-12 lg:mb-16`}>
       {/* Speaker Image - Pure Black Background */}
       <div className="relative flex-shrink-0">
-        {/* Pure Black Background - No glow effect */}
-        <div className="relative w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-2 border-orange-400/50">
+        {/* Pure Black Background - No glow effect, No border */}
+        <div className="relative w-60 h-60 lg:w-64 lg:h-64 h-48 lg:w-56 lg:h-56 overflow-hidden">
           <img
             src={speaker.image}
             alt={speaker.name}
@@ -59,9 +81,22 @@ const SpeakersSection = () => {
         <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
           {speaker.name} {speaker.title && <span className="text-orange-300">{speaker.title}</span>}
         </h3>
+        {/* Primary Bio */}
         <p className="text-gray-300 text-base lg:text-lg leading-relaxed max-w-md">
           {speaker.bio}
         </p>
+        {/* Primary Occupation */}
+        {speaker.occupation && (
+          <p className="text-gray-400 text-sm lg:text-base leading-relaxed max-w-md ">{speaker.occupation}</p>
+        )}
+        {/* Secondary Bio (if exists) */}
+        {speaker.bioLine2 && (
+          <p className="text-gray-300 text-base lg:text-lg leading-relaxed max-w-md mt-2">{speaker.bioLine2}</p>
+        )}
+        {/* Secondary Occupation (if exists) */}
+        {speaker.occupation2 && (
+          <p className="text-gray-400 text-sm lg:text-base leading-relaxed max-w-md">{speaker.occupation2}</p>
+        )}
       </div>
     </div>
   );

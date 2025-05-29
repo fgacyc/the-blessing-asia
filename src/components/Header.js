@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from './Layout/Header';
 import HeroSection from './Sections/HeroSection';
-import BibleVerseSection from './Sections/BibleVerseSection';
+// import BibleVerseSection from './Sections/BibleVerseSection';
 import SpeakersSection from './Sections/SpeakersSection';
 import TicketsSection from './Sections/TicketsSection';
 import SchedulesSection from './Sections/SchedulesSection';
-import MasterclassSection from './Sections/MasterclassSection';
+// import MasterclassSection from './Sections/MasterclassSection';
 import FAQSection from './Sections/FAQSection';
 
 const BlessingAsiaLanding = () => {
@@ -15,11 +15,11 @@ const BlessingAsiaLanding = () => {
 
       <Header />
       <HeroSection />
-      <BibleVerseSection />
+      {/* <BibleVerseSection /> */}
       <SpeakersSection />
       <TicketsSection />
       <SchedulesSection />
-      <MasterclassSection />
+      {/* <MasterclassSection /> */}
       <FAQSection />
 
       {/* Minimal Decorative Elements - Pure Black Background */}

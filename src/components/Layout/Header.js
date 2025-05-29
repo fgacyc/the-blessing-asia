@@ -67,7 +67,10 @@ const Header = () => {
           ${isScrolled ? 'scale-95' : 'scale-100'}
         `}>
           <span className="text-theme-primary font-semibold text-sm sm:text-base transition-all duration-300">
-            TB Logo
+            <img
+              src="/logo-tb.png"
+              alt="TB"
+            />
           </span>
         </div>
 

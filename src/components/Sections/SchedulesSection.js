@@ -78,11 +78,11 @@ const SchedulesSection = () => {
   const DaySchedule = ({ dayData, dayNumber }) => (
     <div className="bg-black/90 backdrop-blur-sm rounded-lg p-6 border border-gray-700/50">
       {/* Day Header */}
-      <div className="mb-6">
+      <div className="mb-6 flex flex-row gap-2 items-center">
         <h3 className="text-white text-xl font-bold mb-1">
           Day {dayNumber < 10 ? `0${dayNumber}` : dayNumber}
         </h3>
-        <p className="text-gray-400 text-sm">{dayData.date}</p>
+        <p className="text-gray-400 text-sm ">{dayData.date}</p>
       </div>
 
       {/* Schedule Items */}
@@ -110,7 +110,13 @@ const SchedulesSection = () => {
   );
 
   return (
-    <section id="schedules" className="min-h-screen bg-black py-16 lg:py-24">
+    <section id="schedules" className="min-h-screen bg-black py-16 lg:py-24 relative overflow-hidden">
+      {/* Orange Glow Effect - Left Center */}
+      <div
+        className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 w-96 h-96 lg:w-[500px] lg:h-[500px] bg-orange-500/90 rounded-full blur-3xl opacity-50 pointer-events-none"
+        aria-hidden="true"
+      />
+
       <Container>
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
