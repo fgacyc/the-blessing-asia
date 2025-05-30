@@ -61,15 +61,15 @@ const SpeakersSection = () => {
 
   // Speaker Card Component
   const SpeakerCard = ({ speaker }) => (
-    <div className={`${isMobile ? 'flex flex-col items-center text-center space-y-6' : 'flex items-start space-x-6'} mb-12 lg:mb-16`}>
+    <div className={`${isMobile ? 'flex flex-col items-center text-center space-y-6' : 'flex items-center text-center space-x-6'} mb-12 lg:mb-16`}>
       {/* Speaker Image - Pure Black Background */}
       <div className="relative flex-shrink-0">
         {/* Pure Black Background - No glow effect, No border */}
-        <div className="relative w-60 h-60 lg:w-64 lg:h-64 h-48 lg:w-56 lg:h-56 overflow-hidden">
+        <div className="relative w-64 h-60 lg:w-64 lg:h-64 h-48 lg:w-56 lg:h-56 overflow-hidden">
           <img
             src={speaker.image}
             alt={speaker.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain object-center"
           />
         </div>
         {/* Orange underline */}

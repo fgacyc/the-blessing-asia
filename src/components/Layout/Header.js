@@ -64,7 +64,6 @@ const Header = () => {
     { id: 'speakers', label: 'Speakers & Guests', chinese: '讲员阵容' },
     { id: 'tickets', label: 'Tickets', chinese: '票价' },
     { id: 'schedules', label: 'Schedules', chinese: '日程表' },
-    { id: 'masterclass', label: 'Masterclass', chinese: '' },
     { id: 'faq', label: 'FAQ', chinese: '' },
   ];
 
@@ -114,12 +113,12 @@ const Header = () => {
                   hover:bg-theme-tertiary/50 hover:scale-105 hover:shadow-lg
                   group-hover:transform group-hover:-translate-y-1
                   ${isScrolled ? 'scale-95' : 'scale-100'}
-                `}>
-                  <div className="text-sm lg:text-base transition-all duration-300 group-hover:text-theme-primary text-theme-secondary relative z-10">
+                `}>  
+                  <div className="text-base lg:text-lg transition-all duration-300 text-theme-primary relative z-10">
                     {item.label}
                   </div>
                   {item.chinese && (
-                    <div className="text-xs opacity-75 group-hover:opacity-100 transition-all duration-300 text-theme-muted relative z-10">
+                    <div className="text-sm opacity-90 group-hover:opacity-100 transition-all duration-300 text-theme-primary relative z-10">
                       {item.chinese}
                     </div>
                   )}

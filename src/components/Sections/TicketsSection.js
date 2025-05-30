@@ -5,35 +5,71 @@ import useResponsive from '../../hooks/useResponsive';
 const TicketsSection = () => {
   const { isMobile } = useResponsive();
 
-  // Countdown target date set to June 23, 2025
-  const [targetDate] = useState(new Date('2025-06-23T23:59:59').getTime());
-  const [timeLeft, setTimeLeft] = useState({
+  // Define end dates for passes
+  const [earlyBirdEndDate] = useState(new Date('2025-06-23T23:59:59'));
+  const [regularPassEndDate] = useState(new Date('2025-08-21T23:59:59'));
+
+  // State for time left for each pass
+  const [earlyBirdTimeLeft, setEarlyBirdTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+  const [regularPassTimeLeft, setRegularPassTimeLeft] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0
   });
 
-  // Countdown timer effect
+  // State for active periods
+  const [isEarlyBirdActive, setIsEarlyBirdActive] = useState(false);
+  const [isRegularPassActive, setIsRegularPassActive] = useState(false);
+  const [areSalesOver, setAreSalesOver] = useState(false);
+
+  const ticketUrl = "https://www.ticket2u.com.my/event/43661_7d063d69f0a4491d841783172b824776";
+
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date().getTime();
-      const distance = targetDate - now;
+      const earlyBirdTargetTime = earlyBirdEndDate.getTime();
+      const regularPassTargetTime = regularPassEndDate.getTime();
 
-      if (distance > 0) {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+      const currentIsEarlyBirdActive = now < earlyBirdTargetTime;
+      const currentIsRegularPassActive = now >= earlyBirdTargetTime && now < regularPassTargetTime;
+      const currentAreSalesOver = now >= regularPassTargetTime;
+
+      setIsEarlyBirdActive(currentIsEarlyBirdActive);
+      setIsRegularPassActive(currentIsRegularPassActive);
+      setAreSalesOver(currentAreSalesOver);
+
+      if (currentIsEarlyBirdActive) {
+        const earlyBirdDistance = earlyBirdTargetTime - now;
+        setEarlyBirdTimeLeft({
+          days: Math.floor(earlyBirdDistance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((earlyBirdDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((earlyBirdDistance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((earlyBirdDistance % (1000 * 60)) / 1000)
         });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setRegularPassTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      } else if (currentIsRegularPassActive) {
+        const regularPassDistance = regularPassTargetTime - now;
+        setEarlyBirdTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setRegularPassTimeLeft({
+          days: Math.floor(regularPassDistance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((regularPassDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((regularPassDistance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((regularPassDistance % (1000 * 60)) / 1000)
+        });
+      } else { // Sales are over
+        setEarlyBirdTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setRegularPassTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, [earlyBirdEndDate, regularPassEndDate]);
 
   // Ticket icon component
   const TicketIcon = () => (
@@ -53,22 +89,28 @@ const TicketsSection = () => {
   );
 
   // Countdown timer component
-  const CountdownTimer = () => (
-    <div className="flex items-center space-x-2 text-white text-sm">
-      <div className="bg-orange-600 px-2 py-1 rounded">
-        <span className="font-bold">{String(timeLeft.days).padStart(2, '0')}</span>
-        <div className="text-xs">days</div>
+  const CountdownTimer = ({ timeLeftData }) => {
+    if (!timeLeftData) return null;
+    return (
+      <div className="flex items-center space-x-1.5 text-white"> {/* Main container for timer segments */}
+        {/* Days Segment */}
+        <div className="bg-black text-center rounded px-2 py-1">
+          <span className="block font-bold text-base leading-none">{String(timeLeftData.days).padStart(2, '0')}</span>
+          <span className="block text-xs leading-none opacity-75">days</span>
+        </div>
+        {/* Hours Segment */}
+        <div className="bg-black text-center rounded px-2 py-1">
+          <span className="block font-bold text-base leading-none">{String(timeLeftData.hours).padStart(2, '0')}</span>
+          <span className="block text-xs leading-none opacity-75">hr</span>
+        </div>
+        {/* Minutes Segment */}
+        <div className="bg-black text-center rounded px-2 py-1">
+          <span className="block font-bold text-base leading-none">{String(timeLeftData.minutes).padStart(2, '0')}</span>
+          <span className="block text-xs leading-none opacity-75">min</span>
+        </div>
       </div>
-      <div className="bg-orange-600 px-2 py-1 rounded">
-        <span className="font-bold">{String(timeLeft.hours).padStart(2, '0')}</span>
-        <div className="text-xs">hr</div>
-      </div>
-      <div className="bg-orange-600 px-2 py-1 rounded">
-        <span className="font-bold">{String(timeLeft.minutes).padStart(2, '0')}</span>
-        <div className="text-xs">min</div>
-      </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <section id="tickets" className="py-16 lg:py-20 relative overflow-hidden bg-black">
@@ -76,7 +118,7 @@ const TicketsSection = () => {
 
       <Container>
         {/* Black Container */}
-        <div className="relative p-8 lg:p-12 rounded-2xl bg-black border border-gray-700/50">
+        <div className="relative p-8 lg:p-12 rounded-2xl bg-gradient-to-b from-black to-gray-500 border border-gray-700/50">
           {/* Pure Black Background */}
 
           <div className="relative z-10">
@@ -115,36 +157,70 @@ const TicketsSection = () => {
                 </div>
 
                 {/* Early Pass */}
-                <div className="bg-black/50 border border-orange-500/30 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:border-orange-500 rounded-xl p-6 space-y-4 transition-all duration-300 cursor-pointer group"> {/* Group class is used for hover effects on children */}
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-white font-bold text-lg">Early Pass</h3>
-                    <CountdownTimer />
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-baseline space-x-2">
-                      <span className="text-white text-3xl font-bold">RM368</span>
-                      <span className="text-gray-300 group-hover:text-white text-sm transition-colors duration-300">(saved RM50)</span>
-                    </div>
-                    <a href="https://www.ticket2u.com.my/event/43661_7d063d69f0a4491d841783172b824776" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white">
-                      <span>Register Now</span>
-                      <span className="text-xl">👆</span>
-                      <span className="ml-auto">→</span>
-                    </a>
-                  </div>
+                <div className={`rounded-xl p-6 space-y-4 transition-all duration-300 ${
+                  isEarlyBirdActive
+                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 cursor-pointer'
+                    : 'bg-black/50 border border-gray-700/50 cursor-default text-gray-400'
+                }`}>
+                  {isEarlyBirdActive ? (
+                    <>
+                      <div className="flex items-center space-x-3">
+                        <h3 className="text-white font-bold text-lg">Early Pass</h3>
+                        <CountdownTimer timeLeftData={earlyBirdTimeLeft} />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-baseline space-x-2">
+                          <span className="text-white text-3xl font-bold">RM368</span>
+                          <span className="text-orange-100 text-sm">(saved RM50)</span>
+                        </div>
+                        <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white">
+                          <span>Register Now</span>
+                          <span className="text-xl">👆</span>
+                          <span className="ml-auto">→</span>
+                        </a>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <h3 className="font-bold text-lg">Early Pass - Ended</h3>
+                      <div className="space-y-2">
+                        <div className="flex items-baseline space-x-2">
+                          <span className="text-3xl font-bold">RM368</span>
+                          <span className="text-sm">(saved RM50)</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <span>Register Now</span>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 {/* Regular Pass */}
-                <div className="bg-black/50 border border-orange-500/30 rounded-xl p-6 space-y-4 transition-all duration-300">
-                  <div className="flex items-center">
+                <div className={`rounded-xl p-6 space-y-4 transition-all duration-300 ${
+                    isRegularPassActive
+                      ? 'bg-gradient-to-r from-orange-500 to-orange-600'
+                      : 'bg-black/50 border border-orange-500/30'
+                  }`}>
+                  <div className="flex items-center space-x-3">
                     <h3 className="text-white font-bold text-lg">Regular Pass</h3>
+                    {isRegularPassActive && <CountdownTimer timeLeftData={regularPassTimeLeft} />}
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-baseline space-x-2">
                       <span className="text-white text-3xl font-bold">RM418</span>
                     </div>
-                    <button className="flex items-center space-x-2 text-white" disabled>
-                      <span>Register Now</span>
-                    </button>
+                    {isRegularPassActive ? (
+                      <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white">
+                        <span>Register Now</span>
+                        <span className="text-xl">👆</span>
+                        <span className="ml-auto">→</span>
+                      </a>
+                    ) : (
+                      <button className="flex items-center space-x-2 text-white" disabled>
+                        <span>{areSalesOver ? "Sales Ended" : "Register Now"}</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -152,8 +228,8 @@ const TicketsSection = () => {
               // Webview Layout: Full width content
               <div className="space-y-8">
                 {/* Header */}
-                <div className="space-y-4">
-                  <h2 className="text-4xl font-bold text-white">
+                <div className="space-y-4"> {/* Removed text-center from here */}
+                  <h2 className="text-4xl font-bold text-white text-center"> {/* Added text-center here */}
                     Tickets 票价
                   </h2>
 
@@ -180,36 +256,76 @@ const TicketsSection = () => {
                 {/* Ticket Options - Side by Side */}
                 <div className="grid grid-cols-2 gap-6">
                   {/* Early Pass */}
-                  <div className="bg-black/50 border border-orange-500/30 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:border-orange-500 rounded-xl p-6 space-y-4 transition-all duration-300 cursor-pointer group"> {/* Group class for hover effects */}
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-white font-bold text-lg">Early Pass</h3>
-                      <CountdownTimer />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-baseline space-x-2">
-                        <span className="text-white text-2xl font-bold">RM368</span>
-                        <span className="text-gray-300 group-hover:text-white text-sm transition-colors duration-300">(saved RM50)</span>
-                      </div>
-                      <a href="https://www.ticket2u.com.my/event/43661_7d063d69f0a4491d841783172b824776" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full text-white">
-                        <div className="flex items-center space-x-2">
-                          <span>Register Now</span>
-                          <span className="text-lg">👆</span>
+                  <div className={`rounded-xl p-6 space-y-4 transition-all duration-300 ${
+                    isEarlyBirdActive
+                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 cursor-pointer'
+                      : 'bg-black/50 border border-gray-700/50 cursor-default text-gray-400'
+                  }`}>
+                    {isEarlyBirdActive ? (
+                      <>
+                        <div className="flex items-center space-x-3">
+                          <h3 className="text-white font-bold text-lg">Early Pass</h3>
+                          <CountdownTimer timeLeftData={earlyBirdTimeLeft} />
                         </div>
-                        <span>→</span>
-                      </a>
-                    </div>
+                        <div className="space-y-2">
+                          <div className="flex items-baseline space-x-2">
+                            <span className="text-white text-2xl font-bold">RM368</span>
+                            <span className="text-orange-100 text-sm">(saved RM50)</span>
+                          </div>
+                          <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full text-white">
+                            <div className="flex items-center space-x-2">
+                              <span>Register Now</span>
+                              <span className="text-lg">👆</span>
+                            </div>
+                            <span>→</span>
+                          </a>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <h3 className="font-bold text-lg">Early Pass - Ended</h3>
+                        <div className="space-y-2">
+                          <div className="flex items-baseline space-x-2">
+                            <span className="text-2xl font-bold">RM368</span>
+                            <span className="text-sm">(saved RM50)</span>
+                          </div>
+                          <div className="flex items-center justify-between w-full">
+                            <div className="flex items-center space-x-2">
+                              <span>Register Now</span>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    )}
                   </div>
 
                   {/* Regular Pass */}
-                  <div className="bg-black/50 border border-orange-500/30 rounded-xl p-6 space-y-4 transition-all duration-300">
-                    <h3 className="text-white font-bold text-lg">Regular Pass</h3>
+                  <div className={`rounded-xl p-6 space-y-4 transition-all duration-300 ${
+                      isRegularPassActive
+                        ? 'bg-gradient-to-r from-orange-500 to-orange-600'
+                        : 'bg-black/50 border border-orange-500/30'
+                    }`}>
+                    <div className="flex items-center space-x-3">
+                      <h3 className="text-white font-bold text-lg">Regular Pass</h3>
+                      {isRegularPassActive && <CountdownTimer timeLeftData={regularPassTimeLeft} />}
+                    </div>
                     <div className="space-y-2">
                       <div className="text-white text-2xl font-bold">RM418</div>
-                      <button className="flex items-center justify-start w-full text-white" disabled>
-                        <div className="flex items-center space-x-2">
-                          <span>Register Now</span>
-                        </div>
-                      </button>
+                      {isRegularPassActive ? (
+                        <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full text-white">
+                          <div className="flex items-center space-x-2">
+                            <span>Register Now</span>
+                            <span className="text-lg">👆</span>
+                          </div>
+                          <span>→</span>
+                        </a>
+                      ) : (
+                        <button className="flex items-center justify-start w-full text-white" disabled>
+                          <div className="flex items-center space-x-2">
+                            <span>{areSalesOver ? "Sales Ended" : "Register Now"}</span>
+                          </div>
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
