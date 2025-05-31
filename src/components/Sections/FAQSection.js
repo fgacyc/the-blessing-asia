@@ -219,7 +219,7 @@ const FAQSection = () => {
     <section id="faq" className="min-h-screen bg-gray-900 py-16 lg:py-24">
       <Container>
         {/* This new div will be the gradient container, similar to TicketsSection.js */}
-        <div className="relative p-8 lg:p-12 rounded-2xl bg-gradient-to-b from-black to-gray-500 border border-gray-700/50">
+        <div className="relative p-8 lg:p-12 rounded-2xl bg-gradient-to-b from-white/5 to-white/15 backdrop-blur-[24px] border border-gray-700/50">
           {/* Section Header */}
           <div className="text-center mb-12 lg:mb-16">
             <h2 className={`${isMobile ? 'text-3xl' : 'text-4xl lg:text-5xl'} font-bold mb-4 text-white`}>
@@ -231,7 +231,7 @@ const FAQSection = () => {
           {isMobile && (
             <div className="space-y-4">
               {filteredFaqCategories.map((category) => (
-                <Card key={category.id} variant="glass" className="overflow-hidden bg-gradient-to-b from-black to-gray-500 border border-gray-700/50">
+                <Card key={category.id} variant="glass" className="overflow-hidden bg-gradient-to-b from-white/5 to-white/15 backdrop-blur-[24px] border border-gray-700/50">
                   {/* Category Header */}
                   <button
                     className="w-full text-left focus:outline-none"
@@ -290,7 +290,7 @@ const FAQSection = () => {
           {!isMobile && (
             <div className="max-w-6xl mx-auto space-y-4">
               {filteredFaqCategories.map((category, categoryIndex) => (
-                <Card key={category.id} variant="glass" className="overflow-hidden bg-gradient-to-b from-black to-gray-500 border border-gray-700/50">
+                <Card key={category.id} variant="glass" className="overflow-hidden bg-gradient-to-b from-white/5 to-white/15 backdrop-blur-[24px] border border-gray-700/50">
                   {/* Category Header */}
                   <button
                     className="w-full text-left focus:outline-none"
@@ -325,7 +325,7 @@ const FAQSection = () => {
                       {category.questions.length > 0 && (
                         <div className="grid grid-cols-2 gap-4">
                           {category.questions.map((question) => (
-                            <Card key={question.id} variant="default" className="overflow-hidden bg-gradient-to-b from-black to-gray-500 border border-gray-700/50">
+                            <Card key={question.id} variant="default" className="overflow-hidden bg-gradient-to-b from-white/5 to-white/15 backdrop-blur-[24px] border border-gray-700/50">
                                 <button
                                   className="w-full text-left focus:outline-none"
                                   onClick={() => toggleFAQ(question.id)}

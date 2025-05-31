@@ -118,8 +118,7 @@ const TicketsSection = () => {
 
       <Container>
         {/* Black Container */}
-        <div className="relative p-8 lg:p-12 rounded-2xl bg-gradient-to-b from-black to-gray-500 border border-gray-700/50">
-          {/* Pure Black Background */}
+        <div className="relative p-8 lg:p-12 rounded-2xl bg-gradient-to-b from-white/5 to-white/15 backdrop-blur-[24px] border border-gray-700/50">
 
           <div className="relative z-10">
             {/* Ticket Icon positioned to overlap top right border */}
@@ -175,7 +174,7 @@ const TicketsSection = () => {
                         </div>
                         <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white">
                           <span>Register Now</span>
-                          <span className="text-xl">👆</span>
+                          <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
                           <span className="ml-auto">→</span>
                         </a>
                       </div>
@@ -213,13 +212,13 @@ const TicketsSection = () => {
                     {isRegularPassActive ? (
                       <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white">
                         <span>Register Now</span>
-                        <span className="text-xl">👆</span>
+                        <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
                         <span className="ml-auto">→</span>
                       </a>
                     ) : (
                       <button className="flex items-center space-x-2 text-white" disabled>
                         <span>{areSalesOver ? "Sales Ended" : "Register Now"}</span>
-                      </button>
+                      </button> // Ensure this button doesn't need the image if it's just text
                     )}
                   </div>
                 </div>
@@ -275,7 +274,7 @@ const TicketsSection = () => {
                           <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full text-white">
                             <div className="flex items-center space-x-2">
                               <span>Register Now</span>
-                              <span className="text-lg">👆</span>
+                              <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
                             </div>
                             <span>→</span>
                           </a>
@@ -315,7 +314,7 @@ const TicketsSection = () => {
                         <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full text-white">
                           <div className="flex items-center space-x-2">
                             <span>Register Now</span>
-                            <span className="text-lg">👆</span>
+                            <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
                           </div>
                           <span>→</span>
                         </a>
