@@ -121,7 +121,7 @@ const SchedulesSection = () => {
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
           <h2 className={`${isMobile ? 'text-3xl' : 'text-4xl lg:text-5xl'} font-bold mb-4 text-white`}>
-            Schedules 日程表
+            Schedule 日程表
           </h2>
         </div>
 

@@ -63,7 +63,7 @@ const Header = () => {
   const navigationItems = [
     { id: 'speakers', label: 'Speakers & Guests', chinese: '讲员阵容' },
     { id: 'tickets', label: 'Tickets', chinese: '票价' },
-    { id: 'schedules', label: 'Schedules', chinese: '日程表' },
+    { id: 'schedules', label: 'Schedule', chinese: '日程表' },
     { id: 'faq', label: 'FAQ', chinese: '' },
   ];
 
