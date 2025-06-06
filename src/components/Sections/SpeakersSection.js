@@ -102,7 +102,7 @@ const SpeakersSection = () => {
   );
 
   return (
-    <section id="speakers" className="min-h-screen bg-black py-16 lg:py-24 relative overflow-hidden">
+    <section id="speakers" className="min-h-screen bg-black py-20 relative overflow-hidden">
       {/* Orange Glow Effect - Top Right */}
       <div
         className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-96 h-96 lg:w-[600px] lg:h-[600px] bg-orange-500/90 rounded-full blur-3xl opacity-50 pointer-events-none"

@@ -114,7 +114,7 @@ const SchedulesSection = () => {
   );
 
   return (
-    <section id="schedules" className="min-h-screen bg-black py-16 lg:py-24 relative overflow-hidden">
+    <section id="schedules" className="min-h-screen bg-black py-20 relative overflow-hidden">
       {/* Orange Glow Effect - Left Center */}
       <div
         className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 w-96 h-96 lg:w-[500px] lg:h-[500px] bg-orange-500/90 rounded-full blur-3xl opacity-50 pointer-events-none"

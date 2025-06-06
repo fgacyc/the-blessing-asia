@@ -216,7 +216,7 @@ const FAQSection = () => {
   const filteredFaqCategories = faqCategories.filter(category => category.id !== 'children' && category.id !== 'services');
 
   return (
-    <section id="faq" className="min-h-screen bg-gray-900 py-16 lg:py-24">
+    <section id="faq" className="min-h-screen bg-gray-900 py-20">
       <Container>
         {/* This new div will be the gradient container, similar to TicketsSection.js */}
         <div className="relative p-8 lg:p-12 rounded-2xl bg-gradient-to-b from-white/5 to-white/15 backdrop-blur-[24px] border border-gray-700/50">
