@@ -23,7 +23,7 @@ const SchedulesSection = () => {
         },
         {
           time: '04:00PM',
-          title: '聚会（二'
+          title: '聚会（二）'
         },
         {
           time: '06:00PM',
@@ -31,7 +31,7 @@ const SchedulesSection = () => {
         },
         {
           time: '07:00PM',
-          title: '聚会（三'
+          title: '聚会（三）'
         },
         {
           time: '09:00PM',
