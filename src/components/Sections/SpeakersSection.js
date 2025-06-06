@@ -27,32 +27,32 @@ const SpeakersSection = () => {
     },
     {
       id: 3,
-      name: '叶果先生',
-      title: '',
+      name: '叶果',
+      title: '先生',
       image: '/叶果先生.png',
       bio: '以勒企业',
       occupation: '董事长'
     },
     {
       id: 4,
-      name: '李绍龄会长',
-      title: '',
+      name: '李绍龄',
+      title: '会长',
       image: '/李绍龄会长.png',
       bio: '台湾世界展望会World Vision',
       occupation: '会长'
     },
     {
       id: 5,
-      name: '袁明琦医师',
-      title: '',
+      name: '袁明琦',
+      title: '医师',
       image: '/袁明琦医师.png',
       bio: '台安医院',
       occupation: '心脏外科主任、行政副院长'
     },
     {
       id: 6,
-      name: '陈金莲女士',
-      title: '',
+      name: '陈金莲',
+      title: '女士',
       image: '/MaryChen.png',
       bio: '全马最大癌症医院 ｜Beacon Hospital 宝康医院',
       occupation: '创办人'
@@ -79,7 +79,7 @@ const SpeakersSection = () => {
       {/* Speaker Info */}
       <div className={`${isMobile ? 'text-center' : 'flex-1'}`}>
         <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
-          {speaker.name} {speaker.title && <span className="text-orange-300">{speaker.title}</span>}
+          {speaker.name} {speaker.title && <span className="text-base lg:text-lg text-white font-medium">{speaker.title}</span>}
         </h3>
         {/* Primary Bio */}
         <p className="text-gray-300 text-base lg:text-lg leading-relaxed max-w-md">

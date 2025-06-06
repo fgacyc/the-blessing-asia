@@ -86,7 +86,7 @@ const SchedulesSection = () => {
         <h3 className="text-white text-xl font-bold mb-1">
           Day {dayNumber < 10 ? `0${dayNumber}` : dayNumber}
         </h3>
-        <p className="text-gray-400 text-sm ">{dayData.date}</p>
+        <p className="text-white text-sm ">{dayData.date}</p>
       </div>
 
       {/* Schedule Items */}
