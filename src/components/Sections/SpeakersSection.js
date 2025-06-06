@@ -30,8 +30,8 @@ const SpeakersSection = () => {
       name: '叶果先生',
       title: '',
       image: '/叶果先生.png',
-      bio: '瑞士海外品牌公司总经理 ',
-      occupation: '总经理'
+      bio: '以勒企业',
+      occupation: '董事长'
     },
     {
       id: 4,
@@ -46,12 +46,12 @@ const SpeakersSection = () => {
       name: '袁明琦医师',
       title: '',
       image: '/袁明琦医师.png',
-      bio: '臺安醫院 ',
-      occupation: '心脏外科主任、行政副院長'
+      bio: '台安医院',
+      occupation: '心脏外科主任、行政副院长'
     },
     {
       id: 6,
-      name: 'Mary Chen',
+      name: '陈金莲女士',
       title: '',
       image: '/MaryChen.png',
       bio: '全马最大癌症医院 ｜Beacon Hospital 宝康医院',
@@ -114,7 +114,7 @@ const SpeakersSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16 lg:mb-20">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-white">
-            Speakers & Guests
+            讲员阵容
           </h2>
         </div>
 

@@ -132,7 +132,7 @@ const TicketsSection = () => {
                 {/* Header */}
                 <div className="text-center space-y-6">
                   <h2 className="text-3xl font-bold text-white">
-                    Tickets 票价
+                    票价
                   </h2>
                 </div>
 
@@ -142,11 +142,11 @@ const TicketsSection = () => {
                   <div className="space-y-2 text-white text-sm">
                     <div className="flex items-center space-x-2">
                       <span className="text-green-400">✓</span>
-                      <span>Day 01 Lunch + Dinner</span>
+                      <span>Day 01 晚餐</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <span className="text-green-400">✓</span>
-                      <span>Day 02 Lunch</span>
+                      <span>Day 02 午餐 + 晚餐</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <span className="text-green-400">✓</span>
@@ -156,93 +156,110 @@ const TicketsSection = () => {
                 </div>
 
                 {/* Early Pass */}
-                <div className={`rounded-xl p-6 space-y-4 transition-all duration-300 ${
-                  isEarlyBirdActive
-                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 cursor-pointer'
-                    : 'bg-black/50 border border-gray-700/50 cursor-default text-gray-400'
-                }`}>
-                  {isEarlyBirdActive ? (
-                    <>
-                      <div className="flex items-center space-x-3">
-                        <h3 className="text-white font-bold text-lg">Early Pass</h3>
-                        <CountdownTimer timeLeftData={earlyBirdTimeLeft} />
-                      </div>
-                      <div className="space-y-2">
-                        <div className="flex items-baseline space-x-2">
-                          <span className="text-white text-3xl font-bold">RM368</span>
-                          <span className="text-orange-100 text-sm">(saved RM50)</span>
-                        </div>
-                        <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white">
-                          <span>Register Now</span>
-                          <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
-                          <span className="ml-auto">→</span>
-                        </a>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <h3 className="font-bold text-lg">Early Pass - Ended</h3>
-                      <div className="space-y-2">
-                        <div className="flex items-baseline space-x-2">
-                          <span className="text-3xl font-bold">RM368</span>
-                          <span className="text-sm">(saved RM50)</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <span>Register Now</span>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                {/* Regular Pass */}
-                <div className={`rounded-xl p-6 space-y-4 transition-all duration-300 ${
-                    isRegularPassActive
-                      ? 'bg-gradient-to-r from-orange-500 to-orange-600'
-                      : 'bg-black/50 border border-orange-500/30'
-                  }`}>
-                  <div className="flex items-center space-x-3">
-                    <h3 className="text-white font-bold text-lg">Regular Pass</h3>
-                    {isRegularPassActive && <CountdownTimer timeLeftData={regularPassTimeLeft} />}
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-baseline space-x-2">
-                      <span className="text-white text-3xl font-bold">RM418</span>
+                {isEarlyBirdActive ? (
+                  <a
+                    href={ticketUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-xl p-6 space-y-4 transition-all duration-300 bg-gradient-to-r from-orange-500 to-orange-600 cursor-pointer"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <h3 className="text-white font-bold text-lg">Early Pass</h3>
+                      <CountdownTimer timeLeftData={earlyBirdTimeLeft} />
                     </div>
-                    {isRegularPassActive ? (
-                      <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white">
+                    <div className="space-y-2">
+                      <div className="flex items-baseline space-x-2">
+                        <span className="text-white text-3xl font-bold">RM368</span>
+                        <span className="text-orange-100 text-sm line-through">RM418</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-white">
                         <span>Register Now</span>
                         <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
                         <span className="ml-auto">→</span>
-                      </a>
-                    ) : (
-                      <button className="flex items-center space-x-2 text-white" disabled>
-                        <span>{areSalesOver ? "Sales Ended" : "Register Now"}</span>
-                      </button> // Ensure this button doesn't need the image if it's just text
-                    )}
+                      </div>
+                    </div>
+                  </a>
+                ) : (
+                  <div
+                    className="rounded-xl p-6 space-y-4 transition-all duration-300 bg-black/50 border border-gray-700/50 cursor-default text-gray-400"
+                  >
+                    <h3 className="font-bold text-lg">Early Pass - Ended</h3>
+                    <div className="space-y-2">
+                      <div className="flex items-baseline space-x-2">
+                        <span className="text-3xl font-bold">RM368</span>
+                        <span className="text-sm line-through">RM418</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <span>Register Now</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {/* Regular Pass */}
+                {!isEarlyBirdActive && (
+                  isRegularPassActive ? (
+                    <a
+                      href={ticketUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block rounded-xl p-6 space-y-4 transition-all duration-300 bg-gradient-to-r from-orange-500 to-orange-600 cursor-pointer"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <h3 className="text-white font-bold text-lg">Regular Pass</h3>
+                        {isRegularPassActive && <CountdownTimer timeLeftData={regularPassTimeLeft} />}
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-baseline space-x-2">
+                          <span className="text-white text-3xl font-bold">RM418</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-white">
+                          <span>Register Now</span>
+                          <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
+                          <span className="ml-auto">→</span>
+                        </div>
+                      </div>
+                    </a>
+                  ) : (
+                    <div
+                      className="rounded-xl p-6 space-y-4 transition-all duration-300 bg-black/50 border border-orange-500/30 cursor-default"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <h3 className="text-white font-bold text-lg">Regular Pass</h3>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-baseline space-x-2">
+                          <span className="text-white text-3xl font-bold">RM418</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-white opacity-50">
+                          <span>{areSalesOver ? "Sales Ended" : "Register Now"}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                )}
               </div>
             ) : (
               // Webview Layout: Full width content
               <div className="space-y-8">
                 {/* Header */}
-                <div className="space-y-4"> {/* Removed text-center from here */}
-                  <h2 className="text-4xl font-bold text-white text-center"> {/* Added text-center here */}
-                    Tickets 票价
-                  </h2>
+                <h2 className="text-4xl font-bold text-white text-center">
+                  Tickets 票价
+                </h2>
 
+                {/* New Grid Layout: Ticket Included | Pass Cards */}
+                <div className="grid lg:grid-cols-2 gap-8 items-start">
                   {/* Ticket Included */}
-                  <div className="space-y-3">
-                    <h3 className="text-white font-semibold">Ticket Included</h3>
+                  <div className="lg:col-span-1 space-y-3">
+                    <h3 className="text-white font-semibold text-lg">Ticket Included</h3>
                     <div className="space-y-2 text-white text-sm">
                       <div className="flex items-center space-x-2">
                         <span className="text-green-400">✓</span>
-                        <span>Day 01 Lunch + Dinner</span>
+                        <span>Day 01 晚餐</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <span className="text-green-400">✓</span>
-                        <span>Day 02 Lunch</span>
+                        <span>Day 02 午餐 + 晚餐</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <span className="text-green-400">✓</span>
@@ -250,84 +267,102 @@ const TicketsSection = () => {
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Ticket Options - Side by Side */}
-                <div className="grid grid-cols-2 gap-6">
-                  {/* Early Pass */}
-                  <div className={`rounded-xl p-6 space-y-4 transition-all duration-300 ${
-                    isEarlyBirdActive
-                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 cursor-pointer'
-                      : 'bg-black/50 border border-gray-700/50 cursor-default text-gray-400'
-                  }`}>
-                    {isEarlyBirdActive ? (
-                      <>
-                        <div className="flex items-center space-x-3">
-                          <h3 className="text-white font-bold text-lg">Early Pass</h3>
-                          <CountdownTimer timeLeftData={earlyBirdTimeLeft} />
-                        </div>
-                        <div className="space-y-2">
-                          <div className="flex items-baseline space-x-2">
-                            <span className="text-white text-2xl font-bold">RM368</span>
-                            <span className="text-orange-100 text-sm">(saved RM50)</span>
+                  {/* Ticket Options - Side by Side (now nested) */}
+                  <div className="lg:col-span-1 grid grid-cols-1 gap-6">
+                    {/* Early Pass Slot */}
+                    <div>
+                      {isEarlyBirdActive ? (
+                        <a
+                          href={ticketUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block rounded-xl p-6 space-y-4 transition-all duration-300 bg-gradient-to-r from-orange-500 to-orange-600 cursor-pointer"
+                        >
+                          <div className="flex items-center space-x-3">
+                            <h3 className="text-white font-bold text-lg">Early Pass</h3>
+                            <CountdownTimer timeLeftData={earlyBirdTimeLeft} />
                           </div>
-                          <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full text-white">
-                            <div className="flex items-center space-x-2">
-                              <span>Register Now</span>
-                              <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
+                          <div className="space-y-2">
+                            <div className="flex items-baseline space-x-2">
+                              <span className="text-white text-2xl font-bold">RM368</span>
+                              <span className="text-orange-100 text-sm line-through">RM418</span>
                             </div>
-                            <span>→</span>
-                          </a>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <h3 className="font-bold text-lg">Early Pass - Ended</h3>
-                        <div className="space-y-2">
-                          <div className="flex items-baseline space-x-2">
-                            <span className="text-2xl font-bold">RM368</span>
-                            <span className="text-sm">(saved RM50)</span>
-                          </div>
-                          <div className="flex items-center justify-between w-full">
-                            <div className="flex items-center space-x-2">
-                              <span>Register Now</span>
+                            <div className="flex items-center justify-between w-full text-white">
+                              <div className="flex items-center space-x-2">
+                                <span>Register Now</span>
+                                <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
+                              </div>
+                              <span>→</span>
                             </div>
                           </div>
-                        </div>
-                      </>
-                    )}
-                  </div>
-
-                  {/* Regular Pass */}
-                  <div className={`rounded-xl p-6 space-y-4 transition-all duration-300 ${
-                      isRegularPassActive
-                        ? 'bg-gradient-to-r from-orange-500 to-orange-600'
-                        : 'bg-black/50 border border-orange-500/30'
-                    }`}>
-                    <div className="flex items-center space-x-3">
-                      <h3 className="text-white font-bold text-lg">Regular Pass</h3>
-                      {isRegularPassActive && <CountdownTimer timeLeftData={regularPassTimeLeft} />}
-                    </div>
-                    <div className="space-y-2">
-                      <div className="text-white text-2xl font-bold">RM418</div>
-                      {isRegularPassActive ? (
-                        <a href={ticketUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full text-white">
-                          <div className="flex items-center space-x-2">
-                            <span>Register Now</span>
-                            <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
-                          </div>
-                          <span>→</span>
                         </a>
                       ) : (
-                        <button className="flex items-center justify-start w-full text-white" disabled>
-                          <div className="flex items-center space-x-2">
-                            <span>{areSalesOver ? "Sales Ended" : "Register Now"}</span>
+                        <div
+                          className="rounded-xl p-6 space-y-4 transition-all duration-300 bg-black/50 border border-gray-700/50 cursor-default text-gray-400"
+                        >
+                          <h3 className="font-bold text-lg">Early Pass - Ended</h3>
+                          <div className="space-y-2">
+                            <div className="flex items-baseline space-x-2">
+                              <span className="text-2xl font-bold">RM368</span>
+                              <span className="text-sm line-through">RM418</span>
+                            </div>
+                            <div className="flex items-center justify-between w-full">
+                              <div className="flex items-center space-x-2">
+                                <span>Register Now</span>
+                              </div>
+                            </div>
                           </div>
-                        </button>
+                        </div>
                       )}
                     </div>
-                  </div>
-                </div>
+
+                    {/* Regular Pass Slot */}
+                    <div>
+                      {!isEarlyBirdActive && (
+                        isRegularPassActive ? (
+                          <a
+                            href={ticketUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block rounded-xl p-6 space-y-4 transition-all duration-300 bg-gradient-to-r from-orange-500 to-orange-600 cursor-pointer"
+                          >
+                            <div className="flex items-center space-x-3">
+                              <h3 className="text-white font-bold text-lg">Regular Pass</h3>
+                              <CountdownTimer timeLeftData={regularPassTimeLeft} />
+                            </div>
+                            <div className="space-y-2">
+                              <div className="text-white text-2xl font-bold">RM418</div>
+                              <div className="flex items-center justify-between w-full text-white">
+                                <div className="flex items-center space-x-2">
+                                  <span>Register Now</span>
+                                  <img src="/Tap.png" alt="Tap here" className="w-5 h-5 inline-block" />
+                                </div>
+                                <span>→</span>
+                              </div>
+                            </div>
+                          </a>
+                        ) : (
+                          <div
+                            className="rounded-xl p-6 space-y-4 transition-all duration-300 bg-black/50 border border-orange-500/30 cursor-default"
+                          >
+                            <div className="flex items-center space-x-3">
+                              <h3 className="text-white font-bold text-lg">Regular Pass</h3>
+                            </div>
+                            <div className="space-y-2">
+                              <div className="text-white text-2xl font-bold">RM418</div>
+                              <div className="flex items-center justify-start w-full text-white opacity-50">
+                                <div className="flex items-center space-x-2">
+                                  <span>{areSalesOver ? "Sales Ended" : "Register Now"}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </div> {/* End of lg:col-span-2 grid */}
+                </div> {/* End of lg:grid-cols-3 */}
               </div>
             )}
           </div>

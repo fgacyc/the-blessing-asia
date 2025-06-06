@@ -109,7 +109,7 @@ const FAQSection = () => {
         {
           id: 10,
           question: '推荐的住宿选择？',
-          answer: '除了 Hilton Kota Kinabalu 之外，参加者可以考虑 Holiday Inn Express Kota Kinabalu。'
+          answer: '除了 Hilton Kota Kinabalu 之外，参加者可以考虑 Holiday Inn Express Kota Kinabalu 或 Cititel Express Kota Kinabalu。'
         }
       ]
     },

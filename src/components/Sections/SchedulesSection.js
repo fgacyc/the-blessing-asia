@@ -11,31 +11,31 @@ const SchedulesSection = () => {
       items: [
         {
           time: '12:00PM',
-          title: 'Registration Kit Collection Grouping'
+          title: '报到与领取特会包'
         },
         {
           time: '02:00PM',
-          title: 'Session 1'
+          title: '聚会（一）'
         },
         {
           time: '03:30PM',
-          title: 'Break & Blessing Connect'
+          title: '小休 & 交流'
         },
         {
           time: '04:00PM',
-          title: 'Session 2'
+          title: '聚会（二'
         },
         {
           time: '06:00PM',
-          title: 'Dinner'
+          title: '晚餐'
         },
         {
           time: '07:00PM',
-          title: 'Session 3 - Opening'
+          title: '聚会（三'
         },
         {
           time: '09:00PM',
-          title: 'Blessing Circle Sharing'
+          title: 'Blessing 小组分享'
         }
       ]
     },
@@ -44,31 +44,35 @@ const SchedulesSection = () => {
       items: [
         {
           time: '10:00AM',
-          title: 'Session 4 - Power Talk*'
+          title: ' 聚会（四）'
         },
         {
-          time: '12:00PM',
-          title: 'Lunch & Blessing COnnect'
+          time: '11:30AM',
+          title: '小休'
         },
         {
-          time: '01:30PM',
-          title: 'Session 5 - Masterclass'
+          time: '11:45PM',
+          title: '聚会（五）'
         },
         {
-          time: '03:00PM',
-          title: 'Rest'
+          time: '01:00PM',
+          title: '午餐 & 交流'
+        },
+        {
+          time: '02:00PM',
+          title: '自由时间'
         },
         {
           time: '04:00PM',
-          title: 'Session 6'
+          title: '大师课'
         },
         {
           time: '06:00PM',
-          title: 'Dinner'
+          title: '晚餐'
         },
         {
           time: '07:00PM',
-          title: 'Revival Healing Night'
+          title: '医治复兴特会'
         }
       ]
     }
@@ -121,7 +125,7 @@ const SchedulesSection = () => {
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
           <h2 className={`${isMobile ? 'text-3xl' : 'text-4xl lg:text-5xl'} font-bold mb-4 text-white`}>
-            Schedule 日程表
+            日程表
           </h2>
         </div>
 
