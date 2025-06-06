@@ -244,7 +244,7 @@ const TicketsSection = () => {
               <div className="space-y-8">
                 {/* Header */}
                 <h2 className="text-4xl font-bold text-white text-center">
-                  Tickets 票价
+                  票价
                 </h2>
 
                 {/* New Grid Layout: Ticket Included | Pass Cards */}
