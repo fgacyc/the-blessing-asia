@@ -246,11 +246,17 @@ const FAQSection = () => {
                       <h3 className="text-orange-400 font-semibold text-lg">
                         {category.title}
                       </h3>
-                      <div className={`transform transition-transform duration-300 ${openCategory === category.id ? 'rotate-180' : ''} flex-shrink-0`}>
-                        <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      {openCategory === category.id ? (
+                        // Minus icon for expanded category
+                        <svg className="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                         </svg>
-                      </div>
+                      ) : (
+                        // Plus icon for collapsed category
+                        <svg className="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                      )}
                     </div>
                   </button>
 
@@ -267,15 +273,21 @@ const FAQSection = () => {
                               <h4 className="text-white font-medium text-sm pr-4">
                                 {question.question}
                               </h4>
-                              <div className={`transform transition-transform duration-300 ${openFAQ === question.id ? 'rotate-180' : ''} flex-shrink-0`}>
-                                <svg className="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              {openFAQ === question.id ? (
+                                // Minus icon for expanded FAQ
+                                <svg className="w-4 h-4 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                                </svg>
+                              ) : (
+                                // Plus icon for collapsed FAQ
+                                <svg className="w-4 h-4 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                                 </svg>
-                              </div>
+                              )}
                             </div>
                           </button>
 
-                          <div className={`transition-all duration-300 ease-in-out ${openFAQ === question.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                          <div className={`transition-all duration-300 ease-in-out ${openFAQ === question.id ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
                             <div className="px-4 pb-4">
                               <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
                                 {renderFormattedAnswer(question)}
