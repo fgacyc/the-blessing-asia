@@ -89,6 +89,11 @@ const FAQSection = () => {
           id: 'tickets-9', // New ID
           question: '我找不到我的确认购票 Email, 我应该怎么办?',
           answer: '你可以检查一下垃圾邮件夹，看看我们的邮件有没有被你的电邮系统挡住。\n为了避免邮件被挡或收不到，我们建议你在填写会员注册电邮时，尽量不要使用 Yahoo 或 Hotmail 的信箱，以免收不到购票确认Email。'
+        },
+        {
+          id: 'tickets-10', // New ID
+          question: '如何索取特会包？',
+          answer: '每位出席者将在第一日登记时，于登记处领取特会包。\n请准备好 Ticket2U 的 QR 码，出示给服事同工扫码登记出席。\n特会包内容包括：\n• Conference Tag（出入识别证）\n• 大会手册\n• 大会精心准备的周边\n\n\n请妥善保管你的特会包物品，部分内容将于会场中使用。'
         }
       ]
     },
@@ -141,7 +146,7 @@ const FAQSection = () => {
         {
           id: 15, // Updated ID from 14
           question: '如何索取特会包？',
-          answer: '每位出席者将在第一日登记时，于登记处领取特会包。\n请准备好 Ticket2U 的 QR 码，出示给服事同工扫码登记出席。\n特会包内容包括：\nConference Tag（出入识别证）\n大会手册\n大会精心准备的周边\n\n\n请妥善保管你的特会包物品，部分内容将于会场中使用。'
+          answer: '每位出席者将在第一日登记时，于登记处领取特会包。\n请准备好 Ticket2U 的 QR 码，出示给服事同工扫码登记出席。\n特会包内容包括：\n• Conference Tag（出入识别证）\n• 大会手册\n• 大会精心准备的周边\n\n\n请妥善保管你的特会包物品，部分内容将于会场中使用。'
         },
         {
           id: 16, // Updated ID from 15

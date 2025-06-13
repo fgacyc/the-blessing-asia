@@ -64,6 +64,7 @@ const Header = () => {
     { id: 'speakers', label: 'Speakers & Guests', chinese: '讲员阵容' },
     { id: 'tickets', label: 'Tickets', chinese: '票价' },
     { id: 'schedules', label: 'Schedule', chinese: '日程表' },
+    { id: 'masterclass', label: 'Master Class', chinese: '主讲'},
     { id: 'faq', label: 'FAQ', chinese: '' },
   ];
 

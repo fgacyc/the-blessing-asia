@@ -5,7 +5,7 @@ import HeroSection from './Sections/HeroSection';
 import SpeakersSection from './Sections/SpeakersSection';
 import TicketsSection from './Sections/TicketsSection';
 import SchedulesSection from './Sections/SchedulesSection';
-// import MasterclassSection from './Sections/MasterclassSection';
+import MasterclassSection from './Sections/MasterclassSection';
 import FAQSection from './Sections/FAQSection';
 
 const BlessingAsiaLanding = () => {
@@ -19,7 +19,7 @@ const BlessingAsiaLanding = () => {
       <SpeakersSection />
       <TicketsSection />
       <SchedulesSection />
-      {/* <MasterclassSection /> */}
+      <MasterclassSection />
       <FAQSection />
 
       {/* Minimal Decorative Elements - Pure Black Background */}
