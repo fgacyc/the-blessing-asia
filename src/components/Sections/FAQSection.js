@@ -261,7 +261,7 @@ const FAQSection = () => {
                   </button>
 
                   {/* Category Questions */}
-                  <div className={`transition-all duration-300 ease-in-out ${openCategory === category.id ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                  <div className={`transition-all duration-300 ease-in-out ${openCategory === category.id ? 'max-h-screen opacity-100 overflow-y-auto' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                     <div className="border-t border-gray-700/30">
                       {category.questions.map((question) => (
                         <div key={question.id} className="border-b border-gray-700/20 last:border-b-0">
@@ -287,9 +287,9 @@ const FAQSection = () => {
                             </div>
                           </button>
 
-                          <div className={`transition-all duration-300 ease-in-out ${openFAQ === question.id ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                          <div className={`transition-all duration-300 ease-in-out ${openFAQ === question.id ? 'max-h-[70vh] opacity-100 overflow-y-auto' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                             <div className="px-4 pb-4">
-                              <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
+                              <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line pr-1"> {/* Added small pr for scrollbar */}
                                 {renderFormattedAnswer(question)}
                               </p>
                             </div>
@@ -367,14 +367,12 @@ const FAQSection = () => {
                                 </button>
 
                                 <div className={`transition-all duration-300 ease-in-out ${
-                                  openFAQ === question.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                                } overflow-hidden`}>
+                                  openFAQ === question.id ? 'max-h-[30rem] opacity-100 overflow-y-auto' : 'max-h-0 opacity-0 overflow-hidden'
+                                }`}>
                                   <div className="px-4 pb-4 border-t border-gray-700/30 pt-4">
-                                    <div className="pt-4">
-                                      <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
-                                        {renderFormattedAnswer(question)}
-                                      </p>
-                                    </div>
+                                    <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line pr-1"> {/* Added small pr for scrollbar */}
+                                      {renderFormattedAnswer(question)}
+                                    </p>
                                   </div>
                                 </div>
                               </Card>

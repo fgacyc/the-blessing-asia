@@ -50,7 +50,7 @@ const MasterclassSection = () => {
         }`}>
           {/* Section Header */}
           <div className="text-center mb-10 lg:mb-14">
-            <h3 className="inline-block text-base lg:text-lg font-semibold text-black bg-gradient-to-tr from-orange-500 to-black/30 px-10 py-2 rounded-tl-4xl rounded-br-4xl mb-3">
+            <h3 className="inline-block text-base lg:text-lg font-semibold text-black bg-gradient-to-tr from-orange-500 to-orange-300/30 px-10 py-2 rounded-tl-4xl rounded-br-4xl mb-3">
               三大核心篇章
             </h3>
             <h2 className={`${isMobile ? 'text-3xl' : 'text-4xl lg:text-5xl'} font-bold mb-4 text-orange-400`}>
@@ -92,7 +92,7 @@ const MasterclassSection = () => {
                     讲员： {mc.speaker}
                   </span>
                 </div>
-                <p className="text-white text-xs italic font-normal pt-2 whitespace-pre-line">
+                <p className=" text-xs text-gray-300 italic font-normal pt-2 whitespace-pre-line">
                   {mc.description}
                 </p>
               </div>
