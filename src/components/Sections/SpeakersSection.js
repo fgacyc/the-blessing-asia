@@ -57,6 +57,14 @@ const SpeakersSection = () => {
       bio: '全马最大癌症医院 ｜Beacon Hospital 宝康医院',
       occupation: '创办人'
     },
+    {
+      id: 7,
+      name: '廖文毓',
+      title: '先生',
+      image: '/廖文毓先生.png',
+      bio: 'AmLife睡眠养生国际公司',
+      occupation: '创办人兼首席执行官'
+    },
   ];
 
   // Speaker Card Component
