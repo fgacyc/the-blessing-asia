@@ -1,16 +1,16 @@
-import React from 'react';
-import Header from './Layout/Header';
-import HeroSection from './Sections/HeroSection';
+import React from "react";
+import Header from "./Layout/Header";
+import HeroSection from "./Sections/HeroSection";
 // import BibleVerseSection from './Sections/BibleVerseSection';
-import SpeakersSection from './Sections/SpeakersSection';
-import TicketsSection from './Sections/TicketsSection';
-import SchedulesSection from './Sections/SchedulesSection';
-import MasterclassSection from './Sections/MasterclassSection';
-import FAQSection from './Sections/FAQSection';
+import SpeakersSection from "./Sections/SpeakersSection";
+import TicketsSection from "./Sections/TicketsSection";
+import SchedulesSection from "./Sections/SchedulesSection";
+import MasterclassSection from "./Sections/MasterclassSection";
+import FAQSection from "./Sections/FAQSection";
 
 const BlessingAsiaLanding = () => {
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+    <div className="min-h-screen bg-white  relative overflow-hidden">
       {/* Pure Black Background - No gradient effects */}
 
       <Header />

@@ -1,5 +1,5 @@
-import React from 'react';
-import useResponsive from '../../hooks/useResponsive';
+import React from "react";
+import useResponsive from "../../hooks/useResponsive";
 
 const HeroSection = () => {
   const { isMobile } = useResponsive();
@@ -8,7 +8,7 @@ const HeroSection = () => {
   const imageBaseClasses = "w-full h-full object-contain object-center";
 
   return (
-    <section className={`relative z-10 bg-black ${isMobile ? 'h-[85vh]' : 'h-[85vh]'} flex items-center justify-center overflow-hidden`}>
+    <section className={`relative z-10 bg-black ${isMobile ? "h-[85vh]" : "h-[85vh]"} flex items-center justify-center overflow-hidden`}>
       {/* Hero Image Container - This div will be the bounds for the image */}
       <div className={`relative w-full h-full bg-black`}>
         <img
