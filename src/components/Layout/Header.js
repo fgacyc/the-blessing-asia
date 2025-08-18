@@ -35,9 +35,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  useEffect(() => {
-    console.log("Is mobile changes : ", isMobile);
-  }, isMobile);
   // Measure header height
   useEffect(() => {
     const navElement = navRef.current;
@@ -57,11 +54,12 @@ const Header = () => {
     };
   }, []); // Empty dependency array, ResizeObserver handles changes.
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const scrollToSection = (route) => {
+    // const element = document.getElementById(sectionId);
+    // if (element) {
+    //   element.scrollIntoView({ behavior: "smooth" });
+    // }
+    router.push(route);
     setIsMobileMenuOpen(false); // Close mobile menu after navigation
   };
 
@@ -71,7 +69,7 @@ const Header = () => {
   };
 
   const navigationItems = [
-    { id: "aboutTheBlessing", label: "About The Bleesing", chinese: "关于我们", route: "/aboutTheBlessing" },
+    { id: "aboutTheBlessing", label: "About The Blessing", chinese: "关于我们", route: "/aboutTheBlessing" },
     {
       id: "theBlessingLocation",
       label: "The Blessing Location",
@@ -93,12 +91,12 @@ const Header = () => {
         /* Added ref for height measurement */
         relative z-50 flex justify-between bg-white items-center w-full px-4 sm:px-8
         fixed top-0 left-0 right-0 header-slide-in
-        transition-all duration-500 ease-in-out
+        transition-all duration-500 ease-in-out 
         ${scrollDirection === "down" && !isMobileMenuOpen ? "-translate-y-full" : "translate-y-0"}
         ${
           isScrolled
-            ? "py-3 bg-gradient-to-r from-theme-primary/98 via-theme-primary/95 to-theme-primary/98 backdrop-blur-enhanced border-b border-theme-primary/50 shadow-2xl"
-            : "py-6 bg-gradient-to-r from-theme-primary/95 via-theme-primary/90 to-theme-primary/95 backdrop-blur-sm border-b border-theme-primary shadow-lg"
+            ? " py-3 bg-gradient-to-r from-theme-primary/98 via-theme-primary/95 to-theme-primary/98 backdrop-blur-enhanced border-b border-theme-primary/50 shadow-2xl"
+            : " py-6 bg-gradient-to-r from-theme-primary/95 via-theme-primary/90 to-theme-primary/95 backdrop-blur-sm border-b border-theme-primary shadow-lg"
         }
       `}
         ref={navRef}>
