@@ -426,7 +426,8 @@ const AboutUsContent = () => {
         <div className={`h-11/12`}>
           <img src="/aboutUs/aboutUs-section-6-img.png" alt="TB" className={imageBaseClasses} />
         </div>
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${isMobile ? "w-42 h-42" : "w-1/2"}`}>
+        <div
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2  ${isMobile ? "w-46 h-46 -translate-y-1/3" : "w-1/2 -translate-y-1/2"}`}>
           <img src="/aboutUs/aboutUs-section-6-text.png" alt="TB" className={imageBaseClasses} />
         </div>
       </div>
