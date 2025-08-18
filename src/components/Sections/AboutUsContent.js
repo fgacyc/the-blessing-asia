@@ -34,12 +34,12 @@ const AboutUsContent = () => {
 
   const { ref: vmaMotion1, inView: vmaMotion1View } = useInView({
     triggerOnce: false,
-    threshold: 0.3,
+    threshold: 0.2,
   });
 
   const { ref: vmaMotion2, inView: vmaView2 } = useInView({
     triggerOnce: false,
-    threshold: 0.3,
+    threshold: 0.2,
   });
 
   const { ref: yearMemory2020, inView: yearMemory2020View } = useInView({
@@ -161,17 +161,17 @@ const AboutUsContent = () => {
           <img src="/aboutUs/aboutUs-section-4-1-vision.png" alt="vision" className={`${isMobile ? "w-1/2 h-2/3" : "w-3/4 h-3/4"} `} />
         </motion.div>
         <motion.div
-          ref={vmaMotion}
+          ref={vmaMotion1}
           initial={{ opacity: 0, scale: 0 }}
-          animate={vmaView ? { opacity: 1, scale: 1 } : {}}
+          animate={vmaMotion1View ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
           className="flex justify-center col-span-1 items-center">
           <img src="/aboutUs/aboutUs-section-4-2-mission.png" alt="mission" className={`${isMobile ? "w-1/2 h-2/3" : "w-3/4 h-3/4"} `} />
         </motion.div>
         <motion.div
-          ref={vmaMotion}
+          ref={vmaMotion2}
           initial={{ opacity: 0, scale: 0 }}
-          animate={vmaView ? { opacity: 1, scale: 1 } : {}}
+          animate={vmaView2 ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
           className="flex justify-center col-span-1 items-center -translate-y-3">
           <img src="/aboutUs/aboutUs-section-4-3-action.png" alt="action" className={`${isMobile ? "w-1/2 h-2/3" : "w-3/4 h-3/4"} `} />
