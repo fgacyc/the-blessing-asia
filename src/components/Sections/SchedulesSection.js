@@ -1,81 +1,103 @@
-import React from 'react';
-import Container from '../Layout/Container';
-import useResponsive from '../../hooks/useResponsive';
+import React from "react";
+import Container from "../Layout/Container";
+import useResponsive from "../../hooks/useResponsive";
 
 const SchedulesSection = () => {
   const { isMobile } = useResponsive();
 
   const scheduleData = {
     1: {
-      date: '22 Aug 2025 | Fri',
+      date: "22 Aug 2025 | Fri",
       items: [
         {
-          time: '12:00PM',
-          title: '报到与领取特会包'
+          time: "12:00PM",
+          title: "报到 + 领取特会包",
         },
         {
-          time: '02:00PM',
-          title: '聚会（一）'
+          time: "02:00PM",
+          title: "信息1：罗伯寿牧师",
         },
         {
-          time: '03:30PM',
-          title: '小休 & 交流'
+          time: "03:30PM",
+          title: "小休 + 小组交流",
         },
         {
-          time: '04:00PM',
-          title: '聚会（二）'
+          time: "04:00PM",
+          title: "信息2：陈金莲女士",
         },
         {
-          time: '06:00PM',
-          title: '晚餐'
+          time: "06:00PM",
+          title: "晚餐",
         },
         {
-          time: '07:00PM',
-          title: '聚会（三）'
+          time: "07:00PM",
+          title: "信息3（开幕）：廖文华牧师",
         },
         {
-          time: '09:00PM',
-          title: 'Blessing 小组分享'
-        }
-      ]
+          time: "09:00PM",
+          title: "小组交流",
+        },
+      ],
     },
     2: {
-      date: '23 Aug 2025 | Sat',
+      date: "23 Aug 2025 | Sat",
       items: [
         {
-          time: '10:00AM',
-          title: ' 聚会（四）'
+          time: "9:00AM",
+          title: "信息4：陈金莲女士",
         },
         {
-          time: '11:30AM',
-          title: '小休'
+          time: "10:30AM",
+          title: "小休",
         },
         {
-          time: '11:45PM',
-          title: '聚会（五）'
+          time: "10:45AM",
+          title: "信息5：叶果先生",
         },
         {
-          time: '01:00PM',
-          title: '午餐 & 交流'
+          time: "11:50AM",
+          title: "小休",
         },
         {
-          time: '02:00PM',
-          title: '自由时间'
+          time: "12:00PM",
+          title: "信息6：袁明琦医师",
         },
         {
-          time: '04:00PM',
-          title: '大师课'
+          time: "01:00PM",
+          title: "午餐 + 小组交流",
         },
         {
-          time: '06:00PM',
-          title: '晚餐'
+          time: "02:00PM",
+          title: "小组分享",
         },
         {
-          time: '07:00PM',
-          title: '医治复兴特会'
-        }
-      ]
-    }
+          time: "03:00PM",
+          title: "信息7：廖文毓社长",
+        },
+        {
+          time: "04:15PM",
+          title: "小休",
+        },
+        {
+          time: "04:30PM",
+          title: "大师课（三选一）",
+          options: [
+            "布局 × 掌局：叶果先生",
+            "破局 × 造局：李绍龄会长",
+            "转局 × 立局：袁明琦医师",
+          ],
+        },
+        {
+          time: "06:00PM",
+          title: "晚餐",
+        },
+        {
+          time: "07:00PM",
+          title: "医治复兴布道会",
+          options: ["廖文华牧师"],
+        },
+      ],
+    },
   };
 
   // Component to render a single day's schedule
@@ -100,12 +122,27 @@ const SchedulesSection = () => {
 
             {/* Time */}
             <div className="flex-shrink-0 w-16">
-              <span className="text-orange-400 text-sm font-medium">{item.time}</span>
+              <span className="text-orange-400 text-sm font-medium">
+                {item.time}
+              </span>
             </div>
 
             {/* Title */}
             <div className="flex-grow">
               <p className="text-white text-sm">{item.title}</p>
+              {/* Options */}
+              {item.options && (
+                <div className="mt-2">
+                  {/* <p className="text-white text-sm">可选：</p> */}
+                  <ul className="list-disc list-inside">
+                    {item.options.map((option, index) => (
+                      <li key={index} className="text-white text-sm">
+                        {option}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -114,7 +151,10 @@ const SchedulesSection = () => {
   );
 
   return (
-    <section id="schedules" className="min-h-screen bg-black py-20 relative overflow-hidden">
+    <section
+      id="schedules"
+      className="min-h-screen bg-black py-20 relative overflow-hidden"
+    >
       {/* Orange Glow Effect - Left Center */}
       <div
         className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 w-96 h-96 lg:w-[500px] lg:h-[500px] bg-orange-500/90 rounded-full blur-3xl opacity-50 pointer-events-none"
@@ -124,7 +164,11 @@ const SchedulesSection = () => {
       <Container>
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
-          <h2 className={`${isMobile ? 'text-3xl' : 'text-4xl lg:text-5xl'} font-bold mb-4 text-white`}>
+          <h2
+            className={`${
+              isMobile ? "text-3xl" : "text-4xl lg:text-5xl"
+            } font-bold mb-4 text-white`}
+          >
             日程表
           </h2>
         </div>
